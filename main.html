@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Valorant Agents</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+</head>
+
+<body>
+    <div class="slideshow-container">
+
+        <map name="cjp">
+            <area shape="rect" coords="0,0,505,1000" href="https://playvalorant.com/pt-br/agents/cypher/"
+                target="_blank">
+            <area shape="rect" coords="506,0,1013,1000" href="https://playvalorant.com/pt-br/agents/jett/"
+                target="_blank">
+            <area shape="rect" coords="1014,0,1519,1000" href="https://playvalorant.com/pt-br/agents/phonix/"
+                target="_blank">
+        </map>
+        <map name="sbv">
+            <area shape="rect" coords="0,0,505,1000" href="https://playvalorant.com/pt-br/agents/sage/" target="_blank">
+            <area shape="rect" coords="506,0,1013,1000" href="https://playvalorant.com/pt-br/agents/brimstone/"
+                target="_blank">
+            <area shape="rect" coords="1014,0,1519,1000" href="https://playvalorant.com/pt-br/agents/viper/"
+                target="_blank">
+        </map>
+        <map name="bos">
+            <area shape="rect" coords="0,0,505,1000" href="https://playvalorant.com/pt-br/agents/breach/"
+                target="_blank">
+            <area shape="rect" coords="506,0,1013,1000" href="https://playvalorant.com/pt-br/agents/omen/"
+                target="_blank">
+            <area shape="rect" coords="1014,0,1519,1000" href="https://playvalorant.com/pt-br/agents/sova/"
+                target="_blank">
+        </map>
+        <div class="mySlides fade">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/48b00898135819.5ed7ff842115e.gif"
+                style="width:100%" usemap="#cjp">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/4becc898135819.5ed7ff8420a14.gif"
+                style="width:100%" usemap="#sbv">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/48f29698135819.5ed7ff84200a8.gif"
+                style="width:100%" usemap="#bos">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <a id="dot1" class="dot" onclick="currentSlide(1)">&#10102;</a>
+        <a id="dot2" class="dot" onclick="currentSlide(2)">&#10103;</a>
+        <a id="dot3" class="dot" onclick="currentSlide(3)">&#10104;</a>
+
+        <input id="speaker" type="image" src="muted.png" onclick="playMusic()">
+
+    </div>
+
+    <script>
+        var music = new Audio("music.ogg");
+        music.volume = 0.1;
+
+        function playMusic() {
+            if (music.paused) {
+                music.play();
+                music.currentTime = 0;
+                document.getElementById("speaker").src = "playing.png";
+            }
+            else {
+                music.pause();
+                document.getElementById("speaker").src = "muted.png";
+            }
+        }
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+    </script>
+</body>
+
+</html>
